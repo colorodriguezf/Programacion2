@@ -8,6 +8,7 @@ public class Cultivo {
 
     public Cultivo(String nombre) {
         this.nombre = nombre;
+        this.enfermedades = new ArrayList<>();
     }
 
     public String getNombre() {

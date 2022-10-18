@@ -8,6 +8,7 @@ public class Enfermedad {
 
     public Enfermedad(String nombre) {
         this.nombre = nombre;
+        this.estados_patologicos_a_tratar = new ArrayList<>();
     }
 
     public String getNombre() {
