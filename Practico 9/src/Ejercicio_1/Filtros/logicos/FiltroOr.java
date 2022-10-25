@@ -1,7 +1,7 @@
-package Filtros.logicos;
+package Ejercicio_1.Filtros.logicos;
 
 import Ejercicio_1.Noticia;
-import Filtros.Filtro;
+import Ejercicio_1.Filtros.Filtro;
 
 public class FiltroOr  extends Filtro{
     private Filtro f1;

@@ -1,7 +1,7 @@
 package Ejercicio_1;
 
-import Filtros.Filtro;
-import Filtros.FiltroPalabraClave;
+import Ejercicio_1.Filtros.Filtro;
+import Ejercicio_1.Filtros.FiltroPalabraClave;
 
 public class MainWeb {
     public static void main(String[] args) {        

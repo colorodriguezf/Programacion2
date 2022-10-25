@@ -1,4 +1,4 @@
-package Filtros;
+package Ejercicio_1.Filtros;
 
 import Ejercicio_1.Noticia;
 

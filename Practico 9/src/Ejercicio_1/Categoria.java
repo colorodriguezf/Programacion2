@@ -2,7 +2,7 @@ package Ejercicio_1;
 
 import java.util.ArrayList;
 
-import Filtros.Filtro;
+import Ejercicio_1.Filtros.Filtro;
 
 public class Categoria extends AdministradorContenido {
     private String descripcion;
