@@ -1,4 +1,4 @@
-package Practico7b;
+package Practico7b.Ejercicio_1;
 import java.time.LocalDate;
 
 public abstract class ElementoFS {

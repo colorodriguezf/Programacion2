@@ -1,4 +1,4 @@
-package Practico7b;
+package Practico7b.Ejercicio_1;
 
 public class AccesoDirecto extends ElementoFS {
     private static final int TAMANIO = 1;

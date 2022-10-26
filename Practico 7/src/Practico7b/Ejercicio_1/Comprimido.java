@@ -1,4 +1,4 @@
-package Practico7b;
+package Practico7b.Ejercicio_1;
 public class Comprimido extends Carpeta  {
     private double factor_compresion;
 
