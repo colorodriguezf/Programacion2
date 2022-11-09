@@ -1,0 +1,318 @@
+public abstract class ElementoIMDB {
+  public abstract int cantidadOscarGanados();-- 1a
+  public abstract ArrayList<Actor> getActores(); --1b
+  public abstract double getPuntaje(); --1c
+  public abstract ArrayList<Pelicula> buscar(Filtro ff); --2
+  public abstract ArrayList<ElementoIDBM> copia(Filtro ff); --4
+
+}
+--------------------------------------------------------------------------------------------------
+public class Pelicula extends ElementoIMDB { 
+  private String titulo;
+  private Int anio_lanzamiento;
+  private int oscars_ganados;
+  private ArrayList<String> actores;
+  private double puntaje;
+
+public Pelicula(String titulo, Int anio, int oscars_ganados, double puntaje) {
+  this.titulo = titulo;
+   this.anio_lanzamiento = anio;
+   this.oscars_ganados = oscars_ganados;
+   this.actores = new ArrayList<String>();
+   this.puntaje = puntaje
+}
+
+public void setTitulo(String titulo) {
+this.titulo = titulo;
+}
+public String getTitulo() {
+return titulo:
+}
+
+public void setAnioL(int anio) {
+this.anio_lanzamiento = anio;
+}
+public int getAnio() {
+return this.anio_lanzamiento;
+}
+
+public void setOscarsGanados(int oscars){
+this.oscars_ganados = oscars;
+}
+public void addActor(String actor) {
+ if (!acoteres.contains(actor) {
+ acotes.add(actor);
+ }
+public void setPuntaje(double puntaje) {
+ this.puntaje = puntaje;
+}
+
+
+@Override --1a
+public int getOscarsGanados() {
+return oscars_ganados;
+}
+}
+@Override --1b
+public ArrayList<String> getActores() {
+ return new ArrayList<String>(this.acotres);
+}
+@Override --1c
+public double getPuntaje(){
+ return puntaje;
+}
+
+@Override --2
+  public abstract ArrayList<Pelicula> buscar(Filtro ff) {
+   ArrayList<Pelicula> pelicula = new ArrayList<>();
+    if(ff.cumple(this) {
+      pelicula.add(this);
+    }
+return pelicula;
+}
+
+@Override --4
+  public abstract ArrayList<ElementoIDBM> copia(Filtro ff) {
+   if(ff.cumple(this) {
+     Pelicula pelicula = new Pelicula (this.getTitulo(), this.getAnio(), this.getOscarsGanados(), this.getPuntaje())
+	for (Actor actor : actores) {
+                      pelicula.addActor(actor);
+	}
+       return pelicula;
+    }  
+   return null;
+ }
+
+}
+
+------------------------------------------------------------------------------------------------------------------------------
+
+public class Grupo extends ElementoIMDB {   --(se refiere a pelicula,saga, o grupo)
+ 
+ private ArrayList<ElementoIMDB> elementos;
+
+public void addElemento(ElementoIMDB e) {
+  elementos.add(e);
+}
+@Override  --1a
+public int getOscarsGanados() {
+int ganados = 0;
+ for(ElementoIMDB e : elementos) {
+	ganados += ganados.getOscarsGanados();
+   }
+reutrn ganados;
+}
+@Override  --1b
+public ArrayList<String> getActores() {
+ ArrayList<Actor> actores = new ArrayList<>();
+   for(ElementoIMDB e : elementos) {
+	ArrayList<Actor> actoresH = e.getActores();
+         for (Actor a : actoresH) {
+               if (!actores.contains(a)) {
+                        actores.add(a);        
+                }
+      }
+    return actores;
+}
+@Override  --1c
+public double getPuntaje(){
+    double puntaje = 0;
+    for (ElementoIMDB e : elementos) {
+       puntaje += e.getPuntaje();
+  }
+  puntaje = puntaje / elementos.size();
+  return puntaje;
+}
+@Override --2
+  public abstract ArrayList<ElementoIDBM> buscar(Filtro ff) {
+   ArrayList<Pelicula> peliculas = new ArrayList<>();
+   for(ElementoIDBM e : elementos) {
+    pelicula.addAll(e.buscar(ff));
+ }
+return peliculas;
+}
+
+@Override --4
+  public abstract ArrayList<ElementoIDBM> copia(Filtro ff) {
+   Grupo grupo = new Grupo());
+   for (ElementoIDBM e : elementos) {
+	ElementoIDBM eHijo = e.getCopia(ff);  
+          if(eHijo != null) {
+            grupo.addElemento(eHijo);
+      }
+    }
+  if(grupo;.size() > 0) {
+        return grupo;
+    }
+   else {
+    return null;
+     }
+ }
+
+}
+------------------------------------------------------------------------------------------------------------
+--2
+public abstract class Filtro {
+   public abstract boolean cumple(Pelicula p);
+}
+------------------------------------------------------------------------------------------------------------------
+--2a y 4b
+public class FiltroActor extends Filtro {
+  private String actor;
+
+ public FiltroActor (String actor){
+   this.actor = actor;
+}
+
+@Override
+public boolean cumple(Pelicula p) {
+ return p.getActor().equals(actor);
+}
+}
+---------------------------------------------------------------------------------------------------------------------
+--2b y 4a
+public class FiltroCantidadActoresMayorA extends Filtro {
+  private int cantidad;
+
+ public FiltroCantidadActoresMayor( int cantidad){
+   this.cantidad = cantidad;
+}
+
+@Override
+public boolean cumple(Pelicula p) {
+ return p.getActores().size > cantidad;
+}
+}
+---------------------------------------------------------------------------------------------------------------------
+--2c
+public class FiltroCantidadOscarsGanados extends Filtro {
+  private int cantidad;
+
+ public FiltroCantidadOscarsGanados( int cantidad){
+   this.cantidad = cantidad;
+}
+
+@Override
+public boolean cumple(Pelicula p) {
+ return p.getOscarsGanados > cantidad;
+}
+---------------------------------------------------------------------------------------------------------------------
+--4c
+public class FiltroCantidadOscars extends Filtro {
+  private int cantidad;
+
+ public FiltroSinOscars ( int cantidad){
+   this.cantidad = cantidad;
+}
+
+@Override
+public boolean cumple(Pelicula p) {
+ return p.getOscarsGanados == cantidad;
+}
+---------------------------------------------------------------------------------------------------------------------
+--2d y 4d FILTROS LOGICOS
+public class FiltroAnd extends Filtro {
+  private Filtro f1;
+  private Filtro f2;
+
+ public FiltroAnd (Filtro f1, Filtro f2){
+   this.f1 = f1;
+   this.f2 = f2;
+}
+
+@Override
+public boolean cumple(Pelicula p) {
+ return f1.cumple(p) && f2.cumple(p);
+ }
+}
+-----------------------------------------------------------------------------------------------------------------------------
+--2d FILTROS LOGICOS
+public class FiltroOr extends Filtro {
+  private Filtro f1;
+  private Filtro f2;
+
+ public FiltroAnd (Filtro f1, Filtro f2){
+   this.f1 = f1;
+   this.f2 = f2;
+}
+
+@Override
+public boolean cumple(Pelicula p) {
+ return f1.cumple(p) || f2.cumple(p);
+ }
+}
+-----------------------------------------------------------------------------------------------------------------------------
+--2d FILTROS LOGICOS
+public class FiltroNot extends Filtro {
+  private Filtro f1;
+
+ public FiltroAnd (Filtro f1){
+   this.f1 = f1;
+}
+
+@Override
+public boolean cumple(Pelicula p) {
+ return !f1.cumple(p);
+ }
+}
+
+------------------------------------------------------------------------------------------------------------------
+--3
+public class GrupoSponsoreado extends Grupo {
+private Pelicula p1;
+
+public GrupoSponsoreado(Pelicula p1) {
+this p1 = p1;
+}
+
+public void setPeliculaSponsoreada(Pelicula p1) {
+  this.p1 = p1;
+}
+public Pelicula getPeliculaSponsoreada() {
+  return this.p1;
+}
+@Override  --1b
+public ArrayList<String> getActores() {
+ ArrayList<Actor> actores = super.getActores();
+    return actores;
+}
+@Override  --1c
+public double getPuntaje(){
+    double puntaje = super.getPuntaje();
+  }
+  return puntaje;
+}
+@Override --2
+  public abstract ArrayList<Pelicula> buscar(Filtro ff) {
+   ArrayList<Pelicula> peliculas = super.buscar(ff);
+   peliculas.add(this.p1)
+}
+
+}
+---------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

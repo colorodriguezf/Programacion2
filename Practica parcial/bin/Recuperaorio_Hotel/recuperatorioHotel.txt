@@ -1,0 +1,270 @@
+public abstract class ElementoHotel {
+     public abstract ArrayList<Habitacion> getTotalHabitaciones(Condicion c); --1,2,3,4
+     public abstract double getTotalm2();
+     public void ArrayList<Habitacion> getTotalHabitaciones(Condicion c, Comparator<Habitacion>c) {
+        ArrayList<Habitacion> habitacionesOrdenadas =this.getTotalHabitaciones(c);
+       Collections.sort(habitacionesOrdenadas, c);
+       return habitacionesOrdenadas;       
+   }
+}
+-----------------------------------------------------------------------------------------------------------------------
+public class Turista {
+ private String nombre;
+ private int edad;
+ private String ciudad;
+ 
+
+  public Turista(String nombre, int edad, String ciudad) {
+    this.nombre = nombre;
+    this.ciudad = ciudad;
+    this.edad = edad;
+}
+ GETTERS Y SETTERS...;
+}
+----------------------------------------------------------------------------------------------------------------------
+public class Habitacion extends ElementoHotel {
+   private int mt2;
+   private int cantcamas;
+   private LocalDate ultOcupacion;
+   private boolean aceptaMascotas;
+private ArrayList<String> comodidades;
+
+public Habitacion(int mt2; int cantcamas, boolean aceptaMascotas, LocalDate ultOcupacion)) {
+  this.mt2 = mt2;
+  this.cantcamas = cantcamas;
+  this.aceptaMascotas = aceptaMascotas;
+  this.comodidades = new ArrayList<String>();
+  this.ultOcupacion = ultOcupacion;
+}
+GETTERS Y SETTERS (en caso que en el main se alquile una habitacion, se settea la ultOcupacion)
+public void setComodidad(String comodidad) {
+ if(!comodidades.contains(comodidad)) {
+     comodidades.add(comodidad)
+    }
+}
+public ArrayList<String> getComodidades() {
+   return new ArrayList<String>(this.comodidades);
+ }
+
+@Override
+--1,2,3,4
+    public ArrayList<Habitacion> getTotalHabitaciones(Condicion c) {
+ 	return new ArrayList<Habitacion>(this);
+}
+@Override
+     public double getTotalm2() {
+    return this.getMt2();
+ }
+}
+
+------------------------------------------------------------------------------------------------------------------------------
+public class Hotel extends ElementoHotel  {
+ private String nombre;
+ private ArrayList<Habitacion> habitaciones;
+   
+     public Hotel(String nombre) {
+    this.nombre = nombre;
+    this.habitaciones = new ArrayList<Habitacion>();
+}
+
+ GGETTERS Y SETTERS NOMBRE
+ public void addHabitacion(Habitacion h) {
+   if(!habitaciones.contains(h) {
+      habitaciones.add(h)
+  }
+}
+public ArrayList<Habitacion> getHabitaciones() {
+ return new ArrayList<Habitacion>(this.habitaciones);
+}
+
+@Override
+--1,2,3,4
+    public ArrayList<Habitacion> getTotalHabitaciones(Condicion c) {
+        ArrayList<Habitacion> habitaciones = new ArrayList<>();
+ 	for (Habitaciones h : habitaciones) {
+               if(condicion.cumple(h) {
+                   habitaciones.add(h);
+          }
+   return total;
+}
+@Override
+     public double getTotalm2() {
+    double total = 0;
+        for (Habitaciones h : habitaciones) {
+              total += h.getMt2();
+     }
+   return total;     
+    }
+
+
+}
+-----------------------------------------------------------------------------------------------------------
+ public class Agrupacion extends ElementoHotel {
+     private ArrayList<ElementoHotel> elementos;
+
+public Agrupacion() {
+ this.elementos = new ArrayList<Elementos>();
+}
+ 
+  @Override
+--1,2,3,4
+    public ArrayList<Habitacion> getTotalHabitaciones(Condicion c) {
+   ArrayList<Habitacion> habitaciones = new ArrayList<>();
+ 	for (Habitaciones h : habitaciones) {
+               habitaciones.addAll(h.getTotalHabitaciones(c));
+          }
+   return total;
+}
+@Override
+     public double getTotalm2() {
+    double total = 0;
+        for ElementoHotel eh : elementos){
+              total += eh.getTotalm2();
+      }
+     return total;     
+    }
+
+--------------------------------------------------------------------------------------------------------------------------
+public abstrac class Condicion {
+  public boolean cumple(Habitacion h);
+}
+--------------------------------------------------------------------------------------------------------------------------
+public class CondicionHabitacionLibre {
+ private LocalDate fecha;
+
+  public CondicionHabitacionLibre(boolean condicion) {
+  this.condicion = condicion;
+  }
+
+  @Override
+   public boolean cumple(Habitacion h) {
+    return h.getultOcupacion().isBefore(fecha);
+ }
+--------------------------------------------------------------------------------------------------------------------------
+public class CondicionHabitacionComodidades {
+ private string comodidad;
+
+  public CondicionHabitacionComodidades(String comodidad) {
+  this.comodidad = comodidad
+  }
+
+  @Override
+   public boolean cumple(Habitacion h) {
+    return h.getComodidades().contains(comodidad);
+ }
+--------------------------------------------------------------------------------------------------------------------------
+public class CondicionHabitacionMts2MayorA {
+ private int mt2;
+
+  public CondicionHabitacionMts2MayorA( int mt2) {
+  this.mt2 = mt2;
+  }
+
+  @Override
+   public boolean cumple(Habitacion h) {
+    return h.getMt2() > mt2;
+ }
+--------------------------------------------------------------------------------------------------------------------------
+FILTROS LOGICOS
+public class CondicionHabitacionAnd {
+ private Condicion c1;
+ private Condicion c2;
+
+  public CondicionHabitacionAnd(Condicion c1, Condicion c2) {
+  this.c1 = c1;
+  this.c2 = c2;
+  }
+
+  @Override
+   public boolean cumple(Habitacion h) {
+    return c1.cumple(h) && c2.cumple(h);
+ }
+--------------------------------------------------------------------------------------------------------------------------
+public class CondicionHabitacionOr {
+ private Condicion c1;
+ private Condicion c2;
+
+  public  CondicionHabitacionOr(Condicion c1, Condicion c2) {
+  this.c1 = c1;
+  this.c2 = c2;
+  }
+
+  @Override
+   public boolean cumple(Habitacion h) {
+    return c1.cumple(h) || c2.cumple(h);
+ }
+--------------------------------------------------------------------------------------------------------------------------
+public class CondicionHabitacionNot {
+ private Condicion c1;
+
+  public CondicionHabitacionNot(Condicion c1) {
+  this.c1 = c1;
+  }
+
+  @Override
+   public boolean cumple(Habitacion h) {
+    return !c1.cumple(h);
+ }
+-------------------------------------------------------------------------------------------------------------------------------
+
+public ComparadorMayorSuperficie implements Comparator<Habitacion> {
+    public int compare(Habitacion h1, Habitacion h2) {
+    return h1.getMt2() - h2.getMt2();
+ }
+}
+
+---------------------------------------------------------------------------------------------------------
+public ComparadorUltimaOcupacion implements Comparator<Habitacion> {
+    public int compare(Habitacion h1, Habitacion h2) {
+    return h1.getUltimaOcupacion().compareTo(h2.getUltimaOcupacion());
+ }
+}
+---------------------------------------------------------------------------------------------------------
+public ComparadorMayorCantCamas implements Comparator<Habitacion> {
+    public int compare(Habitacion h1, Habitacion h2) {
+    return h1.getCantCamas() - h2.getcantCamas();
+ }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
