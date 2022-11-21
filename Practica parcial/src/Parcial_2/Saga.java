@@ -1,5 +1,6 @@
 package Parcial_2;
 
+import java.net.IDN;
 import java.util.ArrayList;
 import Parcial_2.Filtros.Filtro;
 
@@ -47,17 +48,16 @@ public class Saga extends IMDB {
 		return peliculasFiltradas;
     }
 
-    @Override
-    public IMDB getCopiaRestringida(Filtro f1) {
-        Saga copiaFiltrada = new Saga(this.getTitulo());
-		
-		for(IMDB elemento : elementos) {
-			IMDB copiaH = elemento.getCopiaRestringida(f1);
-			if(copiaH != null) {
-				copiaFiltrada.addElementos(elemento.getCopiaRestringida(f1));
-			}
-		}
-		return copiaFiltrada;
-    }
+ @Override
+public IMDB getCopiaRestringida(Filtro f1) {
+	Saga copia = new Saga(getTitulo());
+	for (IMDB elemento : elementos) {
+		IMDB copiaH = elemento.getCopiaRestringida(f1);
+		copia.addElementos(copiaH);
+	}
+	return copia;
+}
+
+
     
 }
