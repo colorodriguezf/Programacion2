@@ -1,7 +1,7 @@
 package Aseguradora_Strategy;
 
-import Aseguradora_Strategy.calculadores.Calculador;
-import Aseguradora_Strategy.calculadores.CalculadorMontoFijo;
+import Aseguradora_Strategy.calculador.Calculador;
+import Aseguradora_Strategy.calculador.CalculadorMontoFijo;
 import Aseguradora_Strategy.comparadores.ComparadorCompuesto;
 import Aseguradora_Strategy.comparadores.ComparadorDni;
 import Aseguradora_Strategy.comparadores.ComparadorNroPoliza;
@@ -11,7 +11,7 @@ import Aseguradora_Strategy.filtros.FiltroMontoMayorA;
 
 public class Main {
     public static void main(String[] args) {
-        Calculador cmf = new CalculadorMontoFijo(2000);
+        CalculadorMontoFijo cmf = new CalculadorMontoFijo(2000);
         //Problema no me deja agregar calculador como atributo!
         SeguroSimple s1 = new SeguroSimple(111,"seguro hogar", 23000.0, 4032234);
         SeguroSimple s2 = new SeguroSimple(222,"seguro riesgo", 12000.0, 43354567);
