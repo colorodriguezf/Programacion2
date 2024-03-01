@@ -39,6 +39,6 @@ public class SeccionEspecial extends Seccion{
         for(int i = 0; i<=palClaves.size()&&  i<= cantidad; i++) {
             resultado.add(palClaves.get(i));
         }
-        return palClaves;
+        return resultado;
     }
 }

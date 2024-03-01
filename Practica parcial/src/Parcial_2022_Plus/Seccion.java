@@ -100,49 +100,4 @@ public class Seccion extends ElementoPortal {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 	public ElementoPortal getCopiaFiltrada(Filtro f) {
-// 		ArrayList<ElementoPortal> cumplen = new ArrayList<>();
-// 		for(ElementoPortal e : elementos) {
-// 			ElementoPortal cumplenH = e.getCopiaFiltrada(f);
-// 			if(cumplenH != null) {
-// 				cumplen.add(cumplenH);
-// 			}
-// 		}
-// 		if(cumplen.size() > 0) {
-// 			Seccion seccionCopia = new Seccion(defecto, posicion);
-// 			for(ElementoPortal e : cumplen) {
-// 				seccionCopia.agregarElemento(e);
-// 			}
-// 			return seccionCopia;
-// 		}
-// 		else {	
-// 			return null;
-// 		}	
-// }
-
-
-
 }
