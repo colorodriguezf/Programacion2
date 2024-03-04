@@ -1,6 +1,6 @@
 package Aseguradora_Strategy;
 import java.util.ArrayList;
-import Aseguradora_Strategy.calculadores.Calculador;
+import Aseguradora_Strategy.calculador.Calculador;
 import Aseguradora_Strategy.filtros.Filtro;
 
 public class SeguroSimple extends ElementoAseguradora {

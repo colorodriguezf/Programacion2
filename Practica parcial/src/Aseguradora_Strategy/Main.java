@@ -13,12 +13,12 @@ public class Main {
     public static void main(String[] args) {
         CalculadorMontoFijo cmf = new CalculadorMontoFijo(2000);
         //Problema no me deja agregar calculador como atributo!
-        SeguroSimple s1 = new SeguroSimple(111,"seguro hogar", 23000.0, 4032234);
-        SeguroSimple s2 = new SeguroSimple(222,"seguro riesgo", 12000.0, 43354567);
-        SeguroSimple s3 = new SeguroSimple(333,"seguro vida", 25000.0, 39849567);
-        SeguroSimple s4 = new SeguroSimple(444,"seguro hogar", 26500.0, 32456764);
-        SeguroSimple s5 = new SeguroSimple(555,"seguro auto", 10000.0, 45345321);
-        SeguroSimple s6 = new SeguroSimple(666,"seguro hogar", 24200.0, 37567763);
+        SeguroSimple s1 = new SeguroSimple(111,"seguro hogar", 23000.0, 4032234, cmf);
+        SeguroSimple s2 = new SeguroSimple(222,"seguro riesgo", 12000.0, 43354567, cmf);
+        SeguroSimple s3 = new SeguroSimple(333,"seguro vida", 25000.0, 39849567,cmf);
+        SeguroSimple s4 = new SeguroSimple(444,"seguro hogar", 26500.0, 32456764,cmf);
+        SeguroSimple s5 = new SeguroSimple(555,"seguro auto", 10000.0, 45345321,cmf);
+        SeguroSimple s6 = new SeguroSimple(666,"seguro hogar", 24200.0, 37567763, cmf);
 
         SeguroIntegrador si = new SeguroIntegrador(4032234);
         
