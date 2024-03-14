@@ -3,7 +3,7 @@ public abstract ArrayList<String> getPalClaves(); //1 sin repetir
 public abstract ArrayList<Simple> getSimpleQue(Filtro f); //2
 public ArrayList<Simple> getSimpleQueOrdenado(Filtro f, Comparator<Simple> c) { //3
     ArrayList<Simple> cumplen = getSimpleQue(f);
-    Collections.sort(cumplen, f);
+    Collections.sort(cumplen, c);
     return cumplen;
 }
 public abstract Abstracta getCopiaFiltrada(Filtro f); //4
