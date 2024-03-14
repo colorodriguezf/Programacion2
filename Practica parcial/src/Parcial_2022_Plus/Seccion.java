@@ -68,24 +68,24 @@ public class Seccion extends ElementoPortal {
 	}
 
 	@Override //PLUS
-	public ElementoPortal getCopiaFiltrada(Filtro f) {
-	ArrayList<ElementoPortal> hijosQueCumplen = new ArrayList<>();
-	for(ElementoPortal e : elementos){
-		ElementoPortal cumplenHijo = e.getCopiaFiltrada(f);
-		if(cumplenHijo!=null){
-			hijosQueCumplen.add(cumplenHijo);
+	public ElementoPortal getCopiaFiltrada(Filtro f) { 
+		ArrayList<ElementoPortal> hijosQueCumplen = new ArrayList<>();
+		for(ElementoPortal e : elementos){
+			ElementoPortal cumplenHijo = e.getCopiaFiltrada(f);
+			if(cumplenHijo!=null){
+				hijosQueCumplen.add(cumplenHijo);
+			}
 		}
-	}
-	if(hijosQueCumplen.size() > 0) {
-		Seccion seccionCopia = new Seccion(defecto, posicion);
-		for(ElementoPortal e : hijosQueCumplen) {
-			seccionCopia.agregarElemento(e);
+		if(hijosQueCumplen.size() > 0) {
+			Seccion seccionCopia = new Seccion(defecto, posicion);
+			for(ElementoPortal e : hijosQueCumplen) {
+				seccionCopia.agregarElemento(e);
+			}
+			return seccionCopia;
 		}
-		return seccionCopia;
-	}
-	else {
-		return null;
-	}
+		else {
+			return null;
+		}
 
 	}
 

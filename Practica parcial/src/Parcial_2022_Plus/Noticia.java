@@ -84,3 +84,6 @@ public class Noticia extends ElementoPortal {
         return null;
     }
 }
+
+
+

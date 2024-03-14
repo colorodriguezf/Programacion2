@@ -1,0 +1,21 @@
+
+Programación 2 TUDAI
+17 de Febrero de 2023
+Para el siguiente problema. reconocer los objetos, su estado y comportamiento, e implementar en JAVA
+1) Ferrocarriles Argentinos (FFAA) desea informatizar la distribución de asientos en sus trenes. FFAA poses múltiples trenes. Cada Tren cuenta con un nombre y está subdividido en diferentes vagones virtuales, "primera clase", "segunda clase", "ingenieros", "reparadores", "conserjes", etc. Estos vagones pueden a su vez agruparse en subsecciones y grupos (por ejemplo, la sección de reparadores se subdivide en "reparadores de exterior" y "reparadores de interior). Cada asiento posee un número identificatorio y una lista de facilidades (por ejemplo asiento 32, <Tapizado". "Auriculares", "Cama">). Los asientos están distribuidos en vagones virtuales, subsecciones y grupos. Los asientos de un vagón virtual/sección/grupo quedan determinados por la unión de todos sus asientos y los asientos que poseen sus componentes (vagones virtuales, subsecciones o grupos en los que se divide).
+De cada pasajero se registra su nombre, edad, y una lista de preferencias. Dado un tren y un pasajero es necesario poder obtener el listado de asientos disponibles (no deben estar ya ocupados por otro pasajero), que puedan ser ocupados por el pasajero.
+Para que un pasajero pueda ocupar una asiento, debe cumplir
+con ciertos requerimientos que dependen de qué asiento se trate, ya que cada asiento posee caracteristicas exclusivas. Un asiento podrá ser ocupado por un determinado pasajero dependiendo de diferentes factores: ⚫ Que el pasajero sea menor de 60 años.
+⚫ Que el pasajero posea entre sus preferencias "vista al exterior" o "lejos del sanitario".
+Que el pasajero sea menor de 25 años.
+•
+Que el pasajero posea entre sus preferencias "frigobar".
+⚫
+Que el pasajero No tenga en su nombre "Juan"
+. Cualquier variación de los factores anteriores o combinación de los mismos (por ejemplo, que sea mayor de 18 años y menor de 40 años o NO tenga entre sus preferencias "sillón masajeador")
+La solución debe ser capaz de informar
+un listado de todos los asientos que podría ocupar un pasajero, siempre respete los requerimientos del asiento y que el mismo este libre.
+El total de asientos en el sistema (incluyendo todos los trenes disponibles).
+. Una copia de todos los elementos (respetando la estructura organizativa) pero restringida a los asientos ocupados por determinados pasajeros. Por ejemplo, conservar sólo los asientos ocupados por pasajeros mayores de 25 años o solo los asientos con pasajeros con preferencias por "cerca del sanitario" (estos son solo algunos ejemplos posibles). Si un elemento de su estructura no posee asientos con pasajeros de las características dadas, no se incluye en la copia de este elemento.
+Tener en cuenta todos los conceptos vistos durante el desarrollo de la materia.
+2) Utilizó algún patrón de diseño en la solución presentada en el punto 1? En caso afirmativo, explicar brevemente ellos patrones utilizados y en qué situaciones se utiliza cada uno (es decir, clases involucradas y métodos más importantes).

@@ -1,15 +1,19 @@
 package Final_01_03_24;
 import java.util.ArrayList;
 
+import Final_01_03_24.criterios.Criterio;
+
 public class Pedido {
     private ArrayList<ElementoSimple> orden;
     private int mesa;
     private String mozo;
+    private Criterio criterio_costo;
 
-    public Pedido(int mesa, String mozo) {
+    public Pedido(int mesa, String mozo, Criterio criterio_costo) {
         this.mesa = mesa;
         this.mozo = mozo;
         this.orden = new ArrayList<>();
+        this.criterio_costo = criterio_costo;
     }
 
     public int getMesa() {
@@ -37,6 +41,8 @@ public class Pedido {
             orden.add(elemento);
         }
     }
+
+
 
     
 
