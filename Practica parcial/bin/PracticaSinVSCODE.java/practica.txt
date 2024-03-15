@@ -3,7 +3,7 @@ public abstract ArrayList<String> getPalClaves(); //1 sin repetir
 public abstract ArrayList<Simple> getSimpleQue(Filtro f); //2
 public ArrayList<Simple> getSimpleQueOrdenado(Filtro f, Comparator<Simple> c) { //3
     ArrayList<Simple> cumplen = getSimpleQue(f);
-    Collections.sort(cumplen, f);
+    Collections.sort(cumplen, c);
     return cumplen;
 }
 public abstract Abstracta getCopiaFiltrada(Filtro f); //4
@@ -52,7 +52,7 @@ public Abstracta getCopiaFiltrada(Filtro f) {
 }
 
  @Override //5
-    public int getCosto() {
+    public int getTotal() {
       return costo.getCosto(this);
     }
 
@@ -67,11 +67,34 @@ CONSTRUCTOR() {
 public ArrayList<Abstracta> getElementos() {
     return new ArrayList<Abstracta>(elementos);
 }
-public void setElemento(Abstracta e) {
+
+//Agrego por onden de llegada:
+public void addElemento(Abstracta e) {
     if(!elementos.contains(e)) {
         elementos.add(e);
     }
 }
+
+//Agrego ordenado por X
+public void addElemento(Abstracta elemento, Comparator<Abstracta> c) {
+    int pos = 0;
+    for(Abstrtacta e : elementos) {
+        if(c.compare(elemento, e) < 0) {
+            break;
+        }
+        pos++
+    }
+    elementos.add(pos, elemento);
+}
+             -------- O -----------
+public void addElemento(Abstracta elemento, Comparator<Abstracta> c) {
+    int pos = 0;
+    while (pos < elementos.size() && comparator.compare(e, elementos.get(pos)) >= 0) {
+        pos++;
+    }
+    elementos.add(pos, elemento);
+}
+
 
 @Override //1
 public ArrayList<String> getPalClaves() {
@@ -100,7 +123,7 @@ public ArrayList<String> getPalClaves() {
     public Abstracta getCopiaFiltrada(Filtro f) {
         ArrayList<Abstracta> hijosQueCumplen = new ArrayLsit<>();
         for(Abstracta e : elementos) {
-            Abstracta copiaHija = e,getCopiaFiltrada(f);
+            Abstracta copiaHija = e.getCopiaFiltrada(f);
         }
         if(copiaHija != null) {
             hijosQueCumplen.add(copiaHija);
@@ -108,16 +131,16 @@ public ArrayList<String> getPalClaves() {
         if(hijosQueCumplen.size() > 0) { //si hijosQueCumplen tiene datos, creamos la copia
             Compuesta copia = new Compuesta(atributos);
             for(Abstracta e : hijosQueCumplen) {
-                copia.add(e); //a la copia le agregamos todos los elementos que cumplen la condicion (hijosQueCumplen)
+                copia.addElemento(e); //a la copia le agregamos todos los elementos que cumplen la condicion (hijosQueCumplen)
             }
         }
     }   
 
     @Override //5
-    public int getCosto() {
+    public int getTotal() {
        int total = 0;
        for(Abstracta e : elementos) {
-        total += e.getCosto(); 
+        total += e.getTotal(); 
        }
     }
 
