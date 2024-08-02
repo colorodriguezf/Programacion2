@@ -76,7 +76,7 @@ public void addElemento(Abstracta e) {
 }
 
 //Agrego ordenado por X
-public void addElemento(Abstracta elemento, Comparator<Abstracta> c) {
+public void addElemento(Abstracta elemento, Comparator<Abstracta> c) { // o el comparador como atributo
     int pos = 0;
     for(Abstrtacta e : elementos) {
         if(c.compare(elemento, e) < 0) {
@@ -87,9 +87,9 @@ public void addElemento(Abstracta elemento, Comparator<Abstracta> c) {
     elementos.add(pos, elemento);
 }
              -------- O -----------
-public void addElemento(Abstracta elemento, Comparator<Abstracta> c) {
+public void addElemento(Abstracta elemento, Comparator<Abstracta> c) { // o el comparador como atributo
     int pos = 0;
-    while (pos < elementos.size() && comparator.compare(e, elementos.get(pos)) >= 0) {
+    while (pos < elementos.size() && comparator.compare(elemento, elementos.get(pos)) >= 0) {
         pos++;
     }
     elementos.add(pos, elemento);

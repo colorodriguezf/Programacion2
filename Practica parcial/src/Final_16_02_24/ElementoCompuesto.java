@@ -44,7 +44,7 @@ public class ElementoCompuesto extends Editorial {
 
 
     public ArrayList<Editorial> getElementos() {
-        return new ArrayList<Editorial>();
+        return new ArrayList<Editorial>(elementos);
     }
 
     public void setElementos(Editorial elemento) {

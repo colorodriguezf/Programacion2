@@ -15,7 +15,7 @@ public class ComparadorCompuesto implements Comparator<SeguroSimple>{
     public int compare(SeguroSimple s1, SeguroSimple s2) {
         int res = c1.compare(s1, s2);
         if(res == 0) {
-            c2.compare(s2, s1);
+            res = c2.compare(s2, s1);
         }
         return res;
     }
