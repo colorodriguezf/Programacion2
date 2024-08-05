@@ -1,6 +1,5 @@
 package Final_01_03_24.filtros.simples;
 
-import Final_01_03_24.ElementoCompuesto;
 import Final_01_03_24.ElementoPasteleria;
 import Final_01_03_24.filtros.Filtro;
 

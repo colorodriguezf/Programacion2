@@ -1,6 +1,5 @@
 package Final_01_12_23.filtros.noLogicos;
 
-import Final_01_12_23.Accion;
 import Final_01_12_23.ElementoAseguradora;
 import Final_01_12_23.filtros.Filtro;
 
