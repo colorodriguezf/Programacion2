@@ -1,6 +1,5 @@
 package Recu2022;
 import java.util.ArrayList;
-import java.util.Comparator;
 import Recu2022.filtros.Filtro;
 
 public abstract class ElementoPortal implements Comparable<ElementoPortal>{

@@ -1,7 +1,6 @@
 package Parcial_2023.filtros.noLogicos;
 
 import Parcial_2023.Empresa;
-import Parcial_2023.Pieza;
 import Parcial_2023.filtros.Filtro;
 
 public class MenosDeGrPla extends Filtro {

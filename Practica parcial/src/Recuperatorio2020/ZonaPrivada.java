@@ -1,6 +1,6 @@
 package Recuperatorio2020;
-import java.util.ArrayList;
-import Recuperatorio2020.Filtros.Filtro;
+// import java.util.ArrayList;
+// import Recuperatorio2020.Filtros.Filtro;
 
 public class ZonaPrivada extends Zona {
 

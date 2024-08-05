@@ -1,5 +1,4 @@
 package Recuperatorio2021_Bazar;
-import java.util.ArrayList;
 
 public class ComboExpress extends Combo {
     private String categoria;

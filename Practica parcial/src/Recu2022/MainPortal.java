@@ -1,6 +1,5 @@
 package Recu2022;
 
-import Recu2022.filtros.Filtro;
 import Recu2022.filtros.FiltroCategoria;
 import Recu2022.filtros.FiltroTituloContengaPalabra;
 

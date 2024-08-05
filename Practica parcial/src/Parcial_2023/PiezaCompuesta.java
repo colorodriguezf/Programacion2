@@ -1,6 +1,4 @@
 package Parcial_2023;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import Parcial_2023.filtros.Filtro;

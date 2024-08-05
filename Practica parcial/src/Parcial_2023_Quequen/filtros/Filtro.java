@@ -1,6 +1,4 @@
 package Parcial_2023_Quequen.filtros;
-
-import Parcial_2023_Quequen.Producto;
 import Parcial_2023_Quequen.SistemaCollections;
 
 public abstract class Filtro {

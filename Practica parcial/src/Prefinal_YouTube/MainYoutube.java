@@ -1,15 +1,11 @@
 package Prefinal_YouTube;
 import java.time.LocalDate;
 
-import Parcial_2.Filtros.logicos.FiltroAnd;
 import Prefinal_YouTube.comparadores.compuesto.ComparadorAnd;
 import Prefinal_YouTube.comparadores.simples.ComparadorEmail;
 import Prefinal_YouTube.comparadores.simples.ComparadorNombreUsuario;
-import Prefinal_YouTube.filtros.Filtro;
 import Prefinal_YouTube.filtros.FiltroVideoAnioIgual;
-import Prefinal_YouTube.filtros.FiltroVideoAutor;
 import Prefinal_YouTube.filtros.FiltroVideoContienePalabraClave;
-import Prefinal_YouTube.filtros.FiltroVideoMeGustasMayorA;
 import Prefinal_YouTube.filtros.FiltroVideoVisualizacionesMayorA;
 
 public class MainYoutube {
