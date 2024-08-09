@@ -6,9 +6,9 @@ import Final_01_03_24.criterios.Criterio;
 import Final_01_03_24.filtros.Filtro;
 
 public abstract class ElementoPasteleria {
-    protected String nombre;
-    protected String tipo;
-    protected String modo_preparacion;
+    private String nombre;
+    private String tipo;
+    private String modo_preparacion;
   
     public ElementoPasteleria(String nombre, String tipo, String modo_preparacion) {
         this.nombre = nombre;

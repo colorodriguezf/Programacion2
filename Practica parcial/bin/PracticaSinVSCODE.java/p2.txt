@@ -9,70 +9,58 @@ public ArrayList<Simple> getSimpleQueOrdenado(Filtro f, Comparator<Simple> c) { 
 public abstract Abstracta getCopiaFiltrada(Filtro f); //4
 
 public abstract int getTotal() //5 cada simple puede calcularse de distinta forma
+
+
 ------------------------------------------------------
 SIMPLE:
 
 private ArrayList<String> palClaves; // atributo 
 private Condicion costo; //suponemos que son distintas formas de calcular X costo;
+
 CONSTRUCTOR(Condicion costo) {
-    this.palClaves = new ArrayList<>();
-    this.costo = costo;
+    
 }
 
 public void setPalClave(String pal) {
-    if(!palClaves.contains(pal)) {
-        palClaves.add(pal);
-    }
+   
 }
 
 @Override //1
 public ArrayList<String> getPalClaves() {
-    return new ArrayList<String>(palClaves);
+   
 }
 
 @Override //2
 public ArrayList<Simple> getSimpleQue(Filtro f) {
-    ArrayList<Simple> cumplen = new ArrayList<>();
-    if(f.cumple(this)) {
-        cumplen.add(this);
-    }
-    return cumplen
+
 }
 
 @Override //4
 public Abstracta getCopiaFiltrada(Filtro f) {
-    if(f.cumple(this)) {
-        Simple copia = new Simle(atributos identicos);
-        for(String p : palClaves) {
-            copia.setPalClave(p); //no se verifica que no este repetida, pq ya el array no tiene repetidas.
-        }
-        return copia;
-    }
-    return null;
+  
 }
 
- @Override //5
-    public int getTotal() {
-      return costo.getCosto(this);
-    }
 
-
+@Override //5
+public int getTotal() {
+    
+}
 
 -------------------------------------------------------
 COMPUESTA:
+
 private ArrayList<Abstracta> elementos; // atributo 
 CONSTRUCTOR() {
-    this.elementos = new ArrayList<>();
+    
 }
+
 public ArrayList<Abstracta> getElementos() {
-    return new ArrayList<Abstracta>(elementos);
+ 
 }
 
 //Agrego por onden de llegada:
 public void addElemento(Abstracta e) {
-    if(!elementos.contains(e)) {
-        elementos.add(e);
-    }
+   
 }
 
 //Agrego ordenado por X
@@ -88,120 +76,81 @@ public void addElemento(Abstracta elemento, Comparator<Abstracta> c) { // o el c
 }
              -------- O -----------
 public void addElemento(Abstracta elemento, Comparator<Abstracta> c) { // o el comparador como atributo
-    int pos = 0;
-    while (pos < elementos.size() && comparator.compare(elemento, elementos.get(pos)) >= 0) {
-        pos++;
-    }
-    elementos.add(pos, elemento);
+  
 }
 
 
 @Override //1
 public ArrayList<String> getPalClaves() {
-    ArrayList<String> pal = new ArrayLsit<>();
-    for(Abstracta e : elementos) {
-        ArrayList<String> aux = e.getPalClaves();
-        for(String p : aux) {
-            if(!pal.contains(p)) {
-                pal.add(p);
-            }
-        }
-        return pal;
-    }
+  
 }
 
-    @Override //2
-    public ArrayList<Simple> getSimpleQue(Filtro f) {
-        ArrayList<Simple> cumplen = new ArrayList<>();
-        for(Abstracta e : elementos) {
-            cumplen.addAll(e.getSimpleQue(f));
-        }
-        return cumplen;
-    }
+@Override //2
+public ArrayList<Simple> getSimpleQue(Filtro f) {
+    
+}
 
-    @Override //4
-    public Abstracta getCopiaFiltrada(Filtro f) {
-        ArrayList<Abstracta> hijosQueCumplen = new ArrayLsit<>();
-        for(Abstracta e : elementos) {
-            Abstracta copiaHija = e.getCopiaFiltrada(f);
-        }
-        if(copiaHija != null) {
-            hijosQueCumplen.add(copiaHija);
-        }
-        if(hijosQueCumplen.size() > 0) { //si hijosQueCumplen tiene datos, creamos la copia
-            Compuesta copia = new Compuesta(atributos);
-            for(Abstracta e : hijosQueCumplen) {
-                copia.addElemento(e); //a la copia le agregamos todos los elementos que cumplen la condicion (hijosQueCumplen)
-            }
-        }
-    }   
+@Override //4
+public Abstracta getCopiaFiltrada(Filtro f) {
 
-    @Override //5
-    public int getTotal() {
-       int total = 0;
-       for(Abstracta e : elementos) {
-        total += e.getTotal(); 
-       }
-    }
+}   
+
+@Override //5
+public int getTotal() {
+ 
+}
 
 -----------------------------------------------------------------------------------------
 FILTROS:
+
  Filtro:
  public abstract class Filtro(){
-    public abstract boolean cumple(Simple s);
+    
  }
 
-Filtro CONDICION extends Filtro {
+    Filtro CONDICION extends Filtro {
     private int/String/double.. dato;
-    
+
     public Condicion(tipoDato dato) {
         this.dato = dato;
     }
     GETTERS AND SETTERS
 
     @Override
-    public boolean cumple(Simple s) {
-        return s.getCondicion.equals(dato); //String
-        return s.getCondicion > dato; //dato numerico, puede ser >, <, >=, <=;
+        public boolean cumple(Simple s) {
+           
+        }
     }
-}
 
 Filtros Logicos:
 -AND Y OR:
 
 public class FiltroAnd/FiltroOr extends Filtro {
-    private filtro f1;
-    private filtro f2;
+  
 
-    public FiltroAnd/FiltroOr(Filtro f1, Filtro f2) {
-        this.f1 = f1;
-        this.f2 = f2;
+    public FiltroAnd/FiltroOr() {
+        
     }
     GETTERS AND SETTERS
     @Override 
     public boolean cumple(Simple s) {
-        return f1.cumple(s) && f2.cumple(s); //FiltroAnd
-        return f1.cumple(s) || f2.cumple(s); //FiltroOr
+     
     }
 }
 
 -NOT:
 
 public class FiltroNot extends Filtro {
-    private Filtro f;
 
     public FiltroNot(Filtro f) {
-        this.filtro = f;
+        
     }
     GETTERS AND SETTERS
     @Override
     public boolean cumple(Simple s) {
-        return !f.cumple(s);
+        
     }
 }
-
-
-
 
 -----------------------------------------------------------------------------------------
 CONDICION (Strateggy):
@@ -217,33 +166,33 @@ public class CostoFijo extends Costo {
    
     @Override
     public int getCosto(Simple s) {
-        return s.getCosto();
+       
     }
 }
 
 -Costo X hs:
 public class CostoXHs extends Costo {
-    private int hs;
-    public CostoXHs(int hs) {
-        this.hs = hs;
+    
+    public CostoXHs() {
+        
     }
     GETTERS Y SETTERS
     @Override
     public int getCosto(Simple s) {
-        return s.getCosto() * hs;
+        
     }
 }
 
 -Costo X palClave:
 public class CostoXPalClave extends Costo {
-    private int costo;
+    
     public CostoXHs(int costo) {
-        this.costo = costo;
+        
     }
     GETTERS Y SETTERS
     @Override
     public int getCosto(Simple s) {
-        return s.getPalClaves().size() * costo;
+       ;
     }
 }
 
@@ -255,13 +204,12 @@ COMPARADORES: Ejemplo comparador por:
     @Override
     public int compare(Simple s1, Simple s2) {
         //Ordena de MENOR a MAYOR:
-        return s1.getNombre().compareTo(s2.getNombre()); 
+        
 
         //para ordenar de MAYOR a MENOR:
-         return s2.getNombre().compareTo(s1.getNombre()); 
+        
                             O
-         return -1* s1.getNombre().compareTo(s2.getNombre()); 
-    }
+        
  }
 
 -Dni:
@@ -269,32 +217,26 @@ COMPARADORES: Ejemplo comparador por:
     @Override
     public int compare(Simple s1, Simple s2) {
         //Ordena de MENOR a MAYOR:
-        return s1.getDni() - s2.getDni(); 
+       
 
         //para ordenar de MAYOR a MENOR:
-         return s2.getDni() - s1.getDni(); 
+         
                             O
-         return -1* s1.getDni() - s2.getDni();; 
+        
     }
  }
 
 -Nombre y dni:
 public class ComparadorAnd implements Comparator<Simple> {
-    private Comparator<Simple> c1;
-    private Comparator<Simple> c2;
+   
 
-    public ComparadorAnd(Comparator<Simple> c1, Comparator<Simple> c2) {
-        this.c1 = c1;
-        this.c2 = c2;
+    public ComparadorAnd() {
+        
     }
     GETTERS Y SETTERS
     @Override
     public int compare(Simple s1, Simple s2) {
-       int res = c1.compare(s1, s2);
-       if(res == 0) {
-        res = c2.compare(s1, s2);
-       }
-       return res;
+      
     }
  }
  ---------------------------------------------------------------------------------------

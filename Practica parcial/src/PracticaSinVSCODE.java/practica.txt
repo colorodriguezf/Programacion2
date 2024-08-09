@@ -222,7 +222,7 @@ public class CostoFijo extends Costo {
 }
 
 -Costo X hs:
-public class CostoFijo extends Costo {
+public class CostoXHs extends Costo {
     private int hs;
     public CostoXHs(int hs) {
         this.hs = hs;
